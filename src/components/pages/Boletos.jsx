@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-import AddFly from "../vuelos/AddFly";
-import SeeFlies from "../vuelos/SeeFlies";
-import AddEscalas from "../vuelos/AddEscalas";
+import AddBoleto from "../boletos/AddBoleto";
+import SeeBoletos from "../boletos/SeeBoletos";
 
-export default function Vuelos() {
-  const [reload, setReload] = useState(false);
+export default function Boletos() {
   const [vuelos, setVuelos] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     setVuelos([]);
@@ -33,23 +32,11 @@ export default function Vuelos() {
       <div className="row p-4">
         <div className="col-12 col-md-6 p-3">
           <div className="row">
-            <AddFly
-              reload={reload}
-              setReload={setReload.bind(this)}
-              toasts={toast}
-            />
-          </div>
-          <div className="row">
-            <AddEscalas
-              reload={reload}
-              setReload={setReload.bind(this)}
-              toasts={toast}
-              vuelos={vuelos}
-            />
+            <AddBoleto toasts={toast} vuelos={vuelos} />
           </div>
         </div>
         <div className="col-12 col-md-6 p-3">
-          <SeeFlies reload={reload} vuelos={vuelos} />
+          <SeeBoletos vuelos={vuelos} />
         </div>
       </div>
       <Toaster />

@@ -1,9 +1,10 @@
 import { useEffect, useState, Fragment } from "react";
 import axios from "axios";
 import moment from "moment/moment";
+import "moment/locale/es";
 
-export default function SeeFlies({ reload }) {
-  const [vuelos, setVuelos] = useState([]);
+export default function SeeFlies({ reload, vuelos}) {
+
   const [escalas, setEscalas] = useState([]);
   const [avion, setAvion] = useState({});
   const [aeropuertos, setAeropuertos] = useState([]);
@@ -11,9 +12,6 @@ export default function SeeFlies({ reload }) {
   const [selected, setSelected] = useState({});
 
   useEffect(() => {
-    axios.get(localStorage.getItem("base") + "vuelos").then((res) => {
-      setVuelos(res.data);
-    });
 
     setAerolinea({});
     setAvion({});
